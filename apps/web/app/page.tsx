@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
-
+import { addUser } from "./actions/actions";
 export default function Home() {
+  const handleSubmit = async () => {
+    const res = await addUser();
+  };
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -51,11 +55,7 @@ export default function Home() {
         </Button>
       </main>
       <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <button rel="noopener noreferrer" onClick={handleSubmit}>
           <Image
             aria-hidden
             src="/file-text.svg"
@@ -64,7 +64,7 @@ export default function Home() {
             height={16}
           />
           Learn
-        </a>
+        </button>
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
